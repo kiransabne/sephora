@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>New Category</title>
+  <style type="text/css">
+  	div.form_search{
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  border-radius:5px;
+}
+p{
+  color: black;
+  margin-left: 30px;
+}
+input[type=text], select {
+    width: 40%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+label{
+    width: 20%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color: transparent;
+}
+input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 150%;
+    padding: 14px 20px;
+    margin: 30px ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+  </style>
+</head>
+<body>
+  <h1>Create new Sub-category</h1>
+  <%= form_for SubCategory.new do |f|%>
+    <%= f.label :sub_category_name %>
+    <%= f.text_field :sub_category_name, placeholder: "sub-category name" %><br />
+    <%= f.label :category %>
+    <%= f.select :category_id, options_for_select( @category.collect{|c| [c.category_name, c.id]})  %><br />
+    <%= f.submit "Create"%>
+  <% end %>
+  <br />
+  <span style="display:inline-block; width: 30px;"></span><%= link_to "View all Sub-category", sub_categories_path %>
+</body>
+</html>

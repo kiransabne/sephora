@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>New product</title>
+  <style type="text/css">
+  	div.form_search{
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  border-radius:5px;
+}
+p{
+  color: black;
+  margin-left: 30px;
+}
+input[type=text], select {
+    width: 40%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+input[type=text], textarea {
+    width: 40%;
+    height: 20% auto;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+label{
+    width: 20%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color: transparent;
+}
+input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 150%;
+    padding: 14px 20px;
+    margin: 30px ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+  </style>
+</head>
+<body>
+  <h1>Create new Product</h1>
+  <%= form_for @product do |f|%>
+    <%= f.label :product_name %>
+    <%= f.text_field :name, placeholder: "name" %><br />
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: "description ..." %><br />
+    <%= f.label :color %>
+    <%= f.text_field :colour, placeholder: "color" %><br />
+    <%= f.label :product_name %>
+    <%= f.text_field :price, placeholder: "price" %> <%= f.label :SGD %><br />
+    <%= f.label :categories %>
+    <%= f.select :category_ids, options_for_select(@categories.collect{|c| [c.category_name, c.id]}), {}, {:multiple => true, :size => 3 }  %><br />
+    <%= f.label :sub_categories %>
+    <%= f.select :sub_category_ids, options_for_select(@sub_categories.collect{|c| [c.sub_category_name + " - " + c.category.category_name, c.id]}), {}, {:multiple => true, :size => 3 }  %><br />
+    <%= f.label :sub_sub_category %>
+    <%= f.select :sub_sub_category_ids, options_for_select(@sub_sub_categories.collect{|c| [c.sub_sub_category_name + " - " + c.sub_category.sub_category_name + " - " + c.sub_category.category.category_name, c.id]}), {}, {:multiple => true, :size => 3 }  %><br />
+    <%= f.submit "Create"%>
+  <% end %>
+</body>
+</html>

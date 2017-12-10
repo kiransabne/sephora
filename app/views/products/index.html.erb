@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+  <style type="text/css">
+  	th, td {
+    padding: 10px;
+}
+ln{color:#169457;
+padding -left: 5px, 5px;
+margin-left:30px;
+font-family: Courier New;
+font-size:120%;
+font-weight: 600;
+line-height:30px
+}
+button
+  {
+  width: auto;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 120%;
+    padding: 8px 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #45a049;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #A3D69B;
+}
+  </style>
+</head>
+<body>
+  <h1>All Products</h1>
+  <table style="width:100%">
+  	<th>Product name</th>
+  	<th>Description</th>
+  	<th>Color</th>
+  	<th>Price</th>
+  <% @products.each do |product| %>
+  <tr align = "center">
+  <td><%= link_to product.name, product_path(id: product.id) %> </td>
+  <td><%= product.description %> </td>
+  <td><%= product.colour %> </td>
+  <td><%= product.price %> SGD </td>
+</tr>
+  <% end %>
+</table>
+</body>
+</html>

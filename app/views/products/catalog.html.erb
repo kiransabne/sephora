@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+<style type="text/css">
+  	th, td {
+    padding: 10px;
+}
+ln{color:#169457;
+padding -left: 5px, 5px;
+margin-left:30px;
+font-family: Courier New;
+font-size:120%;
+font-weight: 600;
+line-height:30px
+}
+button {
+  width: auto;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 120%;
+    padding: 8px 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #45a049;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #A3D69B;
+}
+div.form_search{
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  border-radius:5px;
+}
+p{
+  color: black;
+  margin-left: 30px;
+}
+input[type=text], select {
+    width: 25%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+label{
+    width: 20%;
+    font-size: 170%;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color: transparent;
+}
+input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 150%;
+    padding: 14px 20px;
+    margin: 30px ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+  </style>
+</head>
+<body>
+  <h1> Products</h1>
+  <%= form_tag products_catalog_path, :method => "get" do %>
+  <%= select_tag :category_id, options_for_select(@categories.collect{|c| [c.category_name, c.id]}), {prompt: "Category"} %>
+  <%= select_tag :sub_category_id, options_for_select(@sub_categories.collect{|c| [c.sub_category_name, c.id]}), {prompt: "Sub-category"} %>
+  <%= select_tag :sub_sub_category_id, options_for_select(@sub_sub_categories.collect{|c| [c.sub_sub_category_name, c.id]}), {prompt: "Sub-sub-category"} %>
+  <%= submit_tag "submit" %>
+  <% end %>
+  <table style="width:100%">
+  	<th>Product name</th>
+  	<th>Color</th>
+  	<th>Price</th>
+  <% @products&.each do |product| %>
+  <tr align = "center">
+  <td><%= link_to product.name, product_path(id: product.id) %> </td>
+  <td><%= product.colour %> </td>
+  <td><%= product.price %> SGD </td>
+</tr>
+  <% end %>
+</table>
+</body>
+</html>

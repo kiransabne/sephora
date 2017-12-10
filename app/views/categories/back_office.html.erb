@@ -1,0 +1,18 @@
+<head>
+  <style type="text/css">
+  	div.view{
+  	float: left;
+  	width: 80%;
+  	height: auto;
+  	background-color: #E8F1F0;
+  	padding: 10px;
+  	margin: 10px 1px 10px 10px;
+  	border-radius: 20px;
+  }
+  </style>
+</head>
+<body>
+  <div class="view">
+  	<%= link_to "create Categories", new_category_path  %> <span style="display:inline-block; width: 10px;"></span> <%= link_to "create Sub-categories", new_sub_category_path  %> <span style="display:inline-block; width: 10px;"></span><%= link_to "create Sub-sub-categories", new_sub_sub_category_path  %> <span style="display:inline-block; width: 10px;"></span> <%= link_to "create Product", new_product_path  %>
+  </div>
+</body>
